@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 server.use(express.json());
 
-mongoose.connect('mongodb://localhost/discgolf', { useNewUrlParser: true })
+mongoose.connect('mongodb://localhost/discgolf', { useUnifiedTopology: true, useNewUrlParser: true})
 const db = mongoose.connection
 
 db.on('error', (error) => console.error(error))
