@@ -5,7 +5,7 @@ const server = express();
 const mongoose = require('mongoose');
 
 // imported routers
-const discsRouter = require('./discs/discsRouter.js')
+const inventoryRouter = require('./inventory/inventoryRouter.js')
 
 server.use(express.json());
 
@@ -21,7 +21,7 @@ server.get("/", (req, res) => {
   });
 
 
-server.use("/discs", discsRouter)
+server.use("/inventory", inventoryRouter)
 
 
 module.exports = server;
