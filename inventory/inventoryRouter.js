@@ -11,6 +11,15 @@ router.get('/', async (req,res) => {
     }
 });
 
+router.get('/:id', async (req, res) => {
+    try{
+        const item = await Inventory.findById(req.params._id);
+        res.status(200).json(item)
+    }catch(err){
+        res.status(404).json({message: err})
+    }
+})
+
 router.post('/', async (req,res) => {
     console.log(req.body)
     const item = new Inventory({
@@ -27,5 +36,7 @@ router.post('/', async (req,res) => {
         res.status(400).json({message: err})
     }
 });
+
+
 
 module.exports = router;
