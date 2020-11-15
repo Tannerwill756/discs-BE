@@ -9,6 +9,7 @@ const inventoryRouter = require('./inventory/inventoryRouter.js')
 
 server.use(express.json());
 
+// mongoose connection
 mongoose.connect(process.env.DATABASE_URL, { useUnifiedTopology: true, useNewUrlParser: true})
 const db = mongoose.connection
 
