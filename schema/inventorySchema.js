@@ -5,6 +5,10 @@ const inventorySchema = mongoose.Schema({
         type: String,
         required: true
     },
+    productDescription: {
+        type: String,
+        required: true
+    },
     quantityAvailable: {
         type: Number,
         required: true
@@ -12,7 +16,12 @@ const inventorySchema = mongoose.Schema({
     price: {
         type: Number,
         required: true
-    }
+    },
+    category: {
+        type: String,
+        required: true
+    },
+    discType: String
 })
 
 
