@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Inventory = require('../schema/inventorySchema.js');
 
-// get all Inventory Items
+// GET all Inventory Items
 router.get('/', async (req,res) => {
     try{
         const items = await Inventory.find();
@@ -12,7 +12,7 @@ router.get('/', async (req,res) => {
     }
 });
 
-// get single inventory item by id
+// GET single inventory item by id
 router.get('/:id', async (req, res) => {
     try{
         const item = await Inventory.findById(req.params.id);
@@ -27,7 +27,7 @@ router.get('/:id', async (req, res) => {
     }
 })
 
-// post inventory item
+// POST inventory item
 router.post('/', async (req,res) => {
     const item = new Inventory({
         productName: req.body.productName,
@@ -47,7 +47,18 @@ router.post('/', async (req,res) => {
     }
 });
 
-// delete inventory item by id
+// UPDATE inventory item by id
+router.patch('/:id', (req,res) => {
+    Inventory.findByIdAndUpdate(req.params.id, req.body, (err, item) =>{
+        if(err){
+            res.status(404).json({message: err})
+        }else{
+            res.status(200).json(item)
+        }
+    })
+})
+
+// DELETE inventory item by id
 router.delete('/:id', (req,res) => {
     Inventory.findByIdAndDelete(req.params.id, (err, item) => {
         if(err){
