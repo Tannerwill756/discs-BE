@@ -16,7 +16,12 @@ router.get('/', async (req,res) => {
 router.get('/:id', async (req, res) => {
     try{
         const item = await Inventory.findById(req.params.id);
-        res.status(200).json(item)
+        if(item !== null){
+            res.status(200).json(item)
+        }else{
+            res.status(404).json({message: "This Item Doesn't Exist"})
+        }
+        
     }catch(err){
         res.status(404).json({message: err})
     }
@@ -26,6 +31,7 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req,res) => {
     const item = new Inventory({
         productName: req.body.productName,
+        productDescription: req.body.productDescription,
         quantityAvailable: req.body.quantityAvailable,
         price: req.body.price,
         category: req.body.category,
@@ -42,8 +48,14 @@ router.post('/', async (req,res) => {
 });
 
 // delete inventory item by id
-router.delete('/id', async (req,res) => {
-    const item = await Inventory.findByIdAndDelete
+router.delete('/:id', (req,res) => {
+    Inventory.findByIdAndDelete(req.params.id, (err, item) => {
+        if(err){
+            res.status(404).json({message: err})
+        }else{
+            res.status(200).json({deleted: item})
+        }
+    })
     
 })
 
