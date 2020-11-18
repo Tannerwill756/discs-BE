@@ -22,7 +22,7 @@ const inventorySchema = mongoose.Schema({
         required: true
     },
     discType: String
-})
+});
 
 
-module.exports = mongoose.model('Inventory', inventorySchema)
+module.exports = mongoose.model('Inventory', inventorySchema);
