@@ -84,12 +84,12 @@ router.delete('/:id', (req,res) => {
 
 
 
-// Inventory.find({ discType: "putter" }, (err,data) => {
-//     if(err){
-//         console.log(err)
-//     }else{
-//         console.log(data)
-//     }
-// });
+Inventory.find({ discType: "putter" }, (err,data) => {
+    if(err){
+        console.log(err)
+    }else{
+        console.log(data)
+    }
+});
 
 module.exports = router;
