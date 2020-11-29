@@ -22,6 +22,26 @@ router.get('/putters', async (req,res) => {
     }
 });
 
+// GET midRange
+router.get('/midRange', async (req,res) => {
+    try{
+        const items = await Inventory.find({ discType: "midRange" });
+        res.status(200).json(items);
+    }catch (err) {
+        res.status(404).json({message: err});
+    }
+});
+
+// GET fairwayDriver
+router.get('/fairwayDriver', async (req,res) => {
+    try{
+        const items = await Inventory.find({ discType: "fairwayDriver" });
+        res.status(200).json(items);
+    }catch (err) {
+        res.status(404).json({message: err});
+    }
+});
+
 // GET single inventory item by id
 router.get('/:id', async (req, res) => {
     try{
