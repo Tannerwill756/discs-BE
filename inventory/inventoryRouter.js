@@ -12,6 +12,16 @@ router.get('/', async (req,res) => {
     }
 });
 
+// GET putters
+router.get('/putters', async (req,res) => {
+    try{
+        const items = await Inventory.find({ discType: "putter" });
+        res.status(200).json(items);
+    }catch (err) {
+        res.status(404).json({message: err});
+    }
+});
+
 // GET single inventory item by id
 router.get('/:id', async (req, res) => {
     try{
@@ -27,15 +37,7 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-// GET putters
-router.get('/putters', async (req,res) => {
-    try{
-        const items = await Inventory.find({ discType: "putter" });
-        res.status(200).json(items);
-    }catch (err) {
-        res.json("idk");
-    }
-});
+
 
 // POST inventory item
 router.post('/', async (req,res) => {
@@ -82,14 +84,5 @@ router.delete('/:id', (req,res) => {
 
 
 
-
-
-Inventory.find({ discType: "putter" }, (err,data) => {
-    if(err){
-        console.log(err)
-    }else{
-        console.log(data)
-    }
-});
 
 module.exports = router;
