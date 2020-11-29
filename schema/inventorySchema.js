@@ -21,7 +21,8 @@ const inventorySchema = mongoose.Schema({
         type: String,
         required: true
     },
-    discType: String
+    discType: String,
+    affiliateLink: String,
 });
 
 
