@@ -1,5 +1,4 @@
 const express = require('express');
-const { replaceOne } = require('../schema/inventorySchema.js');
 const router = express.Router();
 const Inventory = require('../schema/inventorySchema.js');
 
@@ -121,8 +120,8 @@ router.patch('/:id', (req,res) => {
         }else{
             res.status(200).json(item);
         }
-    })
-})
+    });
+});
 
 // DELETE inventory item by id
 router.delete('/:id', (req,res) => {
@@ -132,9 +131,8 @@ router.delete('/:id', (req,res) => {
         }else{
             res.status(200).json({deleted: item});
         }
-    })
-    
-})
+    });
+});
 
 
 
