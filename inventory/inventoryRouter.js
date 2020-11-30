@@ -16,7 +16,12 @@ router.get('/', async (req,res) => {
 router.get('/putters', async (req,res) => {
     try{
         const items = await Inventory.find({ discType: "putter" });
-        res.status(200).json(items);
+        
+        if(items.length !== 0){
+            res.status(200).json(items);
+        }else{
+            res.status(404).json({message: "No discs found"});
+        }
     }catch (err) {
         res.status(404).json({message: err});
     }
@@ -26,7 +31,12 @@ router.get('/putters', async (req,res) => {
 router.get('/midRange', async (req,res) => {
     try{
         const items = await Inventory.find({ discType: "midRange" });
-        res.status(200).json(items);
+        
+        if(items.length !== 0){
+            res.status(200).json(items);
+        }else{
+            res.status(404).json({message: "No discs found"});
+        }
     }catch (err) {
         res.status(404).json({message: err});
     }
@@ -36,7 +46,28 @@ router.get('/midRange', async (req,res) => {
 router.get('/fairwayDriver', async (req,res) => {
     try{
         const items = await Inventory.find({ discType: "fairwayDriver" });
-        res.status(200).json(items);
+        
+        if(items.length !== 0){
+            res.status(200).json(items);
+        }else{
+            res.status(404).json({message: "No discs found"});
+        }
+        
+    }catch (err) {
+        res.status(404).json({message: err});
+    }
+});
+
+// GET distanceDriver
+router.get('/distanceDriver', async (req,res) => {
+    try{
+        const items = await Inventory.find({ discType: "distanceDriver" });
+        
+        if(items.length !== 0){
+            res.status(200).json(items);
+        }else{
+            res.status(404).json({message: "No discs found"});
+        }
     }catch (err) {
         res.status(404).json({message: err});
     }
