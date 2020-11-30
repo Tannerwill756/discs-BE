@@ -1,4 +1,5 @@
 const express = require('express');
+const { replaceOne } = require('../schema/inventorySchema.js');
 const router = express.Router();
 const Inventory = require('../schema/inventorySchema.js');
 
@@ -95,10 +96,12 @@ router.post('/', async (req,res) => {
     const item = new Inventory({
         productName: req.body.productName,
         productDescription: req.body.productDescription,
+        productImage: req.body.productImage,
         quantityAvailable: req.body.quantityAvailable,
         price: req.body.price,
         category: req.body.category,
-        discType: req.body.discType ? req.body.discType : ""
+        discType: req.body.discType ? req.body.discType : "",
+        affiliateLink: req.body.affiliateLink ? rec.body.affiliateLink : ""
     });
     
     try{

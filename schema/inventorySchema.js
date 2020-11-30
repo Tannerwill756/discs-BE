@@ -9,13 +9,14 @@ const inventorySchema = mongoose.Schema({
         type: String,
         required: true
     },
+    productImage: {
+        type: String
+    },
     quantityAvailable: {
-        type: Number,
-        required: true
+        type: Number
     },
     price: {
-        type: Number,
-        required: true
+        type: Number
     },
     category: {
         type: String,
